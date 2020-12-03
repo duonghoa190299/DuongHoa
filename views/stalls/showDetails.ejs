@@ -1,0 +1,56 @@
+<%- include("../partials/header") -%>
+
+<div class="container">
+    <div class="card my-4 pb-3">
+        <img class="card-img-top rounded-top" src="<%= foundStall.image %>" alt="<%= foundStall.name %>">
+        <div class="card-body">
+            <div class="float-left">
+                <h3 class="text-capitalize card-title font-weight-bold d-inline">
+                    <%= foundStall.name %></h3>
+                <p style="margin-left: 15px; color: rgb(153, 145, 145)" class="font-italic lead d-inline">
+                    <%= moment(foundStall.createdAt).fromNow() %></p>
+                <h5 style="font-weight: 600;" class="mt-3">Mô tả sản phẩm: </h5>
+                <p class="card-text lead font-italic text-decoration" style="margin-left: 1em; font-weight: 400;">
+                    <%= foundStall.description %></p>
+                <p class="lead">Submitted by <%= foundStall.author.username %></p>
+            </div>
+            <p class="card-text font-italic font-weight-normal lead float-right">
+                ✭ Giá niêm yết: <%= Intl.NumberFormat().format(foundStall.price) %> Vnd/Kg</p>
+        </div>
+        <hr style="margin-left: 5%;" width="90%" />
+        <%if(currentUser && foundStall.author.id.equals(currentUser._id)){%>
+        <div>
+            <a style="margin-left: 12em;" class="btn btn-warning btn-lg float-left text-white"
+                href="/stalls/<%= foundStall._id %>/edit">Edit</a>
+            <form action="/stalls/<%= foundStall._id %>/?_method=DELETE" method="POST" class="float-right">
+                <button style="margin-right: 12em;" class="btn btn-danger btn-lg">Delete</button>
+            </form>
+        </div>
+        <%}
+        %>
+    </div>
+    <!-- Viet comment -->
+    <form action="/stalls/<%= foundStall._id %>/comments" method="POST">
+        <div class="form-group">
+            <textarea name="comment[text]" style="font-size: 130%;" placeholder="Mời bạn thảo luận" rows="3"
+                class="form-control"></textarea>
+            <button class="btn btn-primary my-2 btn-lg btn-block">Gửi Bình Luận</button>
+        </div>
+    </form>
+    <!-- Hien thi comment -->
+    <div class="card my-3 card-body bg-light">
+        <%
+        foundStall.comments.forEach(comment => { %>
+        <div>
+            <strong style="font-size: 150%; color: rgb(155, 180, 63); margin-right: 15px;" class="font-weight-bold">
+                ✭ <%= comment.author.username %></strong>
+            <span style="color: rgb(153, 145, 145)"
+                class="font-italic"><%= moment(comment.createdAt).fromNow() %></span>
+        </div>
+        <p style="margin-left: 15px; font-weight: 400;" class="lead"><%= comment.text %></p>
+        <%   });
+        %>
+    </div>
+</div>
+
+<%- include("../partials/footer") -%>

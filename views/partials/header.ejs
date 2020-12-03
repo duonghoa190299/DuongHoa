@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My App</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <script src="https://use.fontawesome.com/12d4d910d0.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="background-color: #ecf00e;">
+        <a class="navbar-brand" href="/">Chợ vui</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <%if(!currentUser){%>
+                <li>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="/login"><i class="fa fa-user-circle mr-1" aria-hidden="true"></i>Đăng
+                        nhập</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="/register">Đăng ký</a>
+                </li>
+                <%}else{%>
+                <li>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Tìm kiếm</button>
+                    </form>
+                </li>
+                <li class="nav-item ">
+                    <a href="/stalls/manager" class="btn btn-outline-success my-2 mr-2 my-sm-0">Gian hàng</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="/stalls/new" class="btn btn-outline-success my-2 mr-2 my-sm-0">Đăng tin</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="#"><%= currentUser.username %> !</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="/logout">
+                        Thoát
+                    </a>
+                </li>
+                <%}%>
+        </div>
+    </nav>

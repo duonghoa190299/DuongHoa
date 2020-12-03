@@ -1,0 +1,15 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.card-item:hover {
+  border: 1px solid rgb(97, 95, 95);
+}
+p {
+  text-decoration: none;
+}

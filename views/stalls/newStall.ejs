@@ -1,0 +1,30 @@
+<%- include("../partials/header.ejs") -%>
+
+<div class="container">
+    <form action="/stalls/new" method="POST">
+        <div class="form-group">
+            <label for="name">Tên sản phẩm </label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Tên sản phẩm">
+
+        </div>
+        <div class="form-group">
+            <label for="image">Ảnh đại diện sản phẩm</label>
+            <input type="text" class="form-control" id="image" name="image" placeholder="link ảnh">
+            <!-- <input type="file" class="form-control-file" id="image"> -->
+        </div>
+        <div class="form-group">
+            <label for="description">Mô tả chi tiết sản phẩm</label>
+            <div class="controls">
+                <textarea name="des" id="des" class="form-control autogrow" cols="5" id="description" name="description"
+                    placeholder="Mô tả chi tiết"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Giá sản phẩm</label>
+            <input type="number" min="10000" step="1000" class="form-control" id="price" name="price"
+                placeholder="Giá sản phẩm">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<%- include("../partials/footer.ejs") -%>

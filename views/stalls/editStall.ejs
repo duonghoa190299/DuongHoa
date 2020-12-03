@@ -1,0 +1,10 @@
+<%- include("../partials/header") -%>
+<form action="/stalls/<%= foundStall._id %>/?_method=PUT" method="POST">
+    <input type="text" value="<%= foundStall.name %>" name="name">
+    <input type="text" value="<%= foundStall.image %>" name="image">
+    <input type="text" value="<%= foundStall.description %>" name="desc">
+    <input type="number" step="1000" value="<%= foundStall.price %>" name="price">
+    <button>Xác nhận</button>
+</form>
+
+<%- include("../partials/footer") -%>
